@@ -51,10 +51,10 @@ const PriceTrendsSection = async () => {
       {/* ১. আজ দাম বেড়েছে সেকশন */}
       <div>
         <div className="flex items-center gap-2 mb-6">
-          <span className="text-red-600 text-lg font-bold">▲</span>
           <h2 className="text-xl md:text-2xl font-bold text-gray-900">
             আজ দাম বেড়েছে
           </h2>
+          <span className="text-red-600 text-lg font-bold">▲</span>                  
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -120,10 +120,10 @@ const PriceTrendsSection = async () => {
       {/* ২. আজ দাম কমেছে সেকশন */}
       <div>
         <div className="flex items-center gap-2 mb-6">
-          <span className="text-green-600 text-lg font-bold">▼</span>
           <h2 className="text-xl md:text-2xl font-bold text-gray-900">
             আজ দাম কমেছে
           </h2>
+          <span className="text-green-600 text-lg font-bold">▼</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

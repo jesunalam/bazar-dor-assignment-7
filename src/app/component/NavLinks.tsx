@@ -24,7 +24,7 @@ const NavLinks = async () => {
                    
                     navData.map((n: INavLinks) => (
                         <Link 
-                            href={'/'} 
+                            href={`/category/${n.slug}`} 
                             key={n.id}
                             className="flex items-center  px-4 py-2 hover:bg-emerald-50 hover:text-emerald-700 rounded-full text-sm font-medium   transition"
                         >
