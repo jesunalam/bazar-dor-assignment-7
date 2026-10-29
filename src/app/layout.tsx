@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NavBar from "./component/NavBar";
+import Footer from "./component/Footer";
+import NavLinks from "./component/NavLinks";
+import { Suspense } from "react";
+import MovedNavs from "./component/MovedNavs";
+
+
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +31,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-[#F0F5F0] ">
+     <div>
+         <div>
+          <NavBar />
+        </div>
+        <Suspense fallback={<p>ক্যাটাগরি লোড হচ্ছে...</p>}>
+          <NavLinks />
+        </Suspense>
+        <Suspense>
+          <MovedNavs/>
+        </Suspense>
+        <main>{children}</main>
+        <div>
+          <Footer />
+          
+        </div>
+     </div>
+      </body>
     </html>
   );
 }

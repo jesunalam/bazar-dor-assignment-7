@@ -9,9 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@heroui/react": "^3.2.6",
+    "@heroui/styles": "^3.2.6",
     "next": "16.4.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "react-fast-marquee": "^1.6.5"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
