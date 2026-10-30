@@ -38,7 +38,7 @@ const MovedNavs = async () => {
                const bengaliPct = p.change?.pct ? Number(p.change.pct).toLocaleString('bn-BD') : '';
 
                return (
-                 <Link href={"/"} key={p.id} className="inline-flex items-center text-sm text-gray-700 hover:text-black mx-4">
+                 <Link href={`/details/${p.id}`} key={p.id} className="inline-flex items-center text-sm text-gray-700 hover:text-black mx-4">
                    <span className="mr-2">{p.image}</span>
                    <span className="font-medium">{p.nameBn}</span>
                    <span className="ml-1.5">{bengaliPrice} টাকা/কেজি</span>

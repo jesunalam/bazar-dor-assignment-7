@@ -44,7 +44,7 @@ const HeroSectionPage = () => {
           {/* Button */}
           <div className="pt-2">
             <Link
-              href="/products"
+              href="#all-products"
               className="inline-block bg-[#1B8339] hover:bg-[#156d2e] text-white font-medium px-6 py-3 rounded-xl shadow-md transition-all duration-200"
             >
               সব পণ্য দেখুন

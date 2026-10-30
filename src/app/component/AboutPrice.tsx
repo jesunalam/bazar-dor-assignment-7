@@ -66,7 +66,7 @@ const PriceTrendsSection = async () => {
 
             return (
               <Link
-                href={`/products/${p.id}`}
+                href={`/details/${p.id}`}
                 key={p.id}
                 className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between"
               >
@@ -135,7 +135,7 @@ const PriceTrendsSection = async () => {
 
             return (
               <Link
-                href={`/products/${p.id}`}
+                href={`/details/${p.id}`}
                 key={p.id}
                 className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between"
               >

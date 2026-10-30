@@ -15,7 +15,7 @@ const NavLinks = async () => {
     
     const navData: INavLinks[] = await res.json();
    
-    console.log(navData);
+    // console.log(navData);
 
     return (
         <>

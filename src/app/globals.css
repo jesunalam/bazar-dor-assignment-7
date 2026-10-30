@@ -1,2 +1,5 @@
+html {
+  scroll-behavior: smooth;
+}
 @import "tailwindcss";
 @import "@heroui/styles"; 

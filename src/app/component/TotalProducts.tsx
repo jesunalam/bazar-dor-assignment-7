@@ -40,7 +40,7 @@ const AllProductsSection = async () => {
   const totalProductsBn = Number(products.length).toLocaleString("bn-BD");
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8 space-y-6">
+    <div id="all-products" className="max-w-7xl mx-auto px-4 py-8 space-y-6">
       
       <div>
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
@@ -61,7 +61,7 @@ const AllProductsSection = async () => {
 
           return (
             <Link
-              href={`/products/${p.id}`}
+              href={`/details/${p.id}`}
               key={p.id}
               className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between"
             >
