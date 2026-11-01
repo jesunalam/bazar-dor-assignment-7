@@ -1,5 +1,5 @@
 "use client";
-import { updateUser,  useSession, signOut } from "@/lib/auth-client";
+import { updateUser, useSession, signOut } from "@/lib/auth-client";
 import {
   Button,
   FieldError,
@@ -10,21 +10,20 @@ import {
   TextField,
 } from "@heroui/react";
 import React from "react";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
-  const { data: session }= useSession();
-
+  const { data: session } = useSession();
 
   const handleUpdateUser = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
     console.log(userData);
-    
-    const resData = await updateUser({
-      name: userData.name as string
-    });
 
+    const resData = await updateUser({
+      name: userData.name as string,
+    });
   };
 
   return (
@@ -32,7 +31,9 @@ const ProfilePage = () => {
       {/* Page Header */}
       <div>
         <h1 className="text-2xl font-bold text-gray-900">আমার প্রোফাইল</h1>
-        <p className="text-sm text-gray-500">আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
+        <p className="text-sm text-gray-500">
+          আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।
+        </p>
       </div>
 
       {/* User Info Card */}
@@ -41,7 +42,7 @@ const ProfilePage = () => {
           <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#1B8339]/10 text-2xl font-bold text-[#1B8339]">
             {session?.user?.name?.[0]?.toUpperCase() || "U"}
           </div>
-          
+
           <div>
             <h2 className="text-xl font-bold text-gray-900">
               {session?.user?.name || ""}
@@ -52,8 +53,11 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        <Button 
-          onClick={() =>signOut()}
+        <Button
+          onClick={async () => {
+            await signOut();
+            toast.error("সফলভাবে লগআউট হয়েছে!");
+          }}
           className="h-10 rounded-xl border border-red-200 bg-white px-4 text-sm font-medium text-red-600 shadow-sm transition hover:bg-red-50"
         >
           সাইন আউট
@@ -63,7 +67,7 @@ const ProfilePage = () => {
       {/* Form Card (Screenshot এর সাথে হুবহু মিল রেখে স্টাইল করা) */}
       <div className="p-6 bg-white rounded-3xl border border-gray-100 shadow-sm space-y-6 pb-10">
         <h3 className="text-lg font-bold text-gray-900">তথ্য</h3>
-        
+
         <Form onSubmit={handleUpdateUser} className="space-y-6">
           <Fieldset.Group>
             <TextField
@@ -77,17 +81,17 @@ const ProfilePage = () => {
               }}
             >
               <Label className="text-sm font-medium text-gray-700">নাম</Label>
-              <Input 
-                placeholder="" 
-                variant="secondary" 
-                className="w-full h-11 px-4 rounded-xl border border-gray-200 bg-white text-gray-800 outline-none focus:border-[#1B8339]" 
+              <Input
+                placeholder=""
+                variant="secondary"
+                className="w-full h-11 px-4 rounded-xl border border-gray-200 bg-white text-gray-800 outline-none focus:border-[#1B8339]"
               />
               <FieldError className="text-xs text-red-500 mt-1" />
             </TextField>
           </Fieldset.Group>
-          
-          <Button 
-            type="submit" 
+
+          <Button
+            type="submit"
             className="w-full h-11 rounded-xl bg-[#1B8339] text-white font-medium flex items-center justify-center shadow-sm transition hover:bg-[#156c2e]"
           >
             আপডেট

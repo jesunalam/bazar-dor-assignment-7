@@ -6,7 +6,8 @@ import Footer from "./component/Footer";
 import NavLinks from "./component/NavLinks";
 import { Suspense } from "react";
 import MovedNavs from "./component/MovedNavs";
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#F0F5F0] ">
+         <ToastContainer position="top-right" autoClose={3000} />
      <div>
          <div>
           <NavBar />

@@ -1,5 +1,7 @@
 "use client";
 import { Eye, EyeSlash } from "@gravity-ui/icons";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 import {
   Button,
   FieldError,
@@ -14,34 +16,44 @@ import Link from "next/link";
 import Image from "next/image";
 import { signIn } from "@/lib/auth-client";
 
+
 const SignInPage = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const router = useRouter();
 
   const onSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     console.log("Sign In Data:", data);
-    const {data:resData,error}=await signIn.email({
-        email:data.email as string,
-        password:data.password as string,
-        callbackURL:'/'
-
-    })
-    console.log(resData,error);
-  };
-  const handleGoogleSignIn= async()=>{
-    const resData=await signIn.social({
-      provider:'google'
-    })
-    console.log(resData);
-  }
-  const handleGithubSignIn= async () => {
-    const gittuData = await signIn.social({
-        provider: "github"
-    })
-    console.log(gittuData);
+    const { data: resData, error } = await signIn.email({
+      email: data.email as string,
+      password: data.password as string,
+      // callbackURL: "/",
+    });
+  if (error) {
+  toast.error("ইমেইল অথবা পাসওয়ার্ড ভুল!");
+} else {
+  toast.success("সাইন ইন সফল হয়েছে!");
+  router.push("/");
 }
+    console.log(resData, error);
+  };
+  
+  const handleGoogleSignIn = async () => {
+    toast.info("Google দিয়ে সাইন ইন করা হচ্ছে...");
+    const resData = await signIn.social({
+      provider: "google",
+    });
+    console.log(resData);
+  };
+  const handleGithubSignIn = async () => {
+    toast.info("GitHub দিয়ে সাইন ইন করা হচ্ছে...");
+    const gittuData = await signIn.social({
+      provider: "github",
+    });
+    console.log(gittuData);
+  };
 
   return (
     <div className="flex  flex-col items-center justify-center bg-[#F4F7F4]  text-gray-800">
@@ -56,7 +68,7 @@ const SignInPage = () => {
       </div>
 
       {/* মূল ফর্ম কার্ড */}
-      <div className="w-full max-w-md rounded-3xl border border-gray-200/80 bg-white p-8 shadow-sm">
+      <div className="w-full max-w-md rounded-3xl border border-gray-200/80 bg-white p-7 shadow-sm">
         <Form className="flex w-full flex-col gap-4" onSubmit={onSubmit}>
           <TextField
             isRequired
@@ -125,7 +137,8 @@ const SignInPage = () => {
 
         {/* সোশ্যাল লগইন বাটন */}
         <div className="flex gap-3">
-          <button onClick={handleGoogleSignIn}
+          <button
+            onClick={handleGoogleSignIn}
             type="button"
             className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition"
           >
@@ -134,7 +147,7 @@ const SignInPage = () => {
           </button>
 
           <button
-          onClick={handleGithubSignIn}
+            onClick={handleGithubSignIn}
             type="button"
             className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition"
           >
