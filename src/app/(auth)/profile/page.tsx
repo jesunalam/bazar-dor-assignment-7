@@ -24,6 +24,11 @@ const ProfilePage = () => {
     const resData = await updateUser({
       name: userData.name as string,
     });
+      if (resData.error) {
+    toast.error("নাম আপডেট করা যায়নি!");
+  } else {
+    toast.success("নাম সফলভাবে আপডেট হয়েছে!");
+  }
   };
 
   return (
