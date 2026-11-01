@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
-import { inherits } from "util";
+
 
 function TodayDate() {
   const today = new Date().toLocaleDateString("bn-BD", {

@@ -198,7 +198,7 @@ const SignUpPage = () => {
           অ্যাকাউন্ট আছে?{" "}
           <Link
             href="/signIn"
-            className="font-medium text-[#1B8339] hover:underline"
+            className="font-medium font-semibold text-[#089c32] hover:underline"
           >
             সাইন ইন করুন
           </Link>
@@ -209,7 +209,7 @@ const SignUpPage = () => {
       <div className="mt-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 transition-all duration-200 hover:-translate-x-1"
+          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 transition-all duration-200 hover:-translate-x-1 pb-10"
         >
           <span>←</span> হোম পেজে ফিরে যান
         </Link>

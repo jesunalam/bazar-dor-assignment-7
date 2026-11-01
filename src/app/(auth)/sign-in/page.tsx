@@ -30,9 +30,15 @@ const SignInPage = () => {
     })
     console.log(resData,error);
   };
+  const handleGoogleSignIn= async()=>{
+    const resData=await signIn.social({
+      provider:'google'
+    })
+    console.log(resData);
+  }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#F4F7F4] p-4 text-gray-800">
+    <div className="flex  flex-col items-center justify-center bg-[#F4F7F4]  text-gray-800">
       {/* হেডার টাইটেল */}
       <div className="mb-6 text-center">
         <h1 className="text-2xl font-bold mt-13 tracking-tight text-gray-900">
@@ -113,7 +119,7 @@ const SignInPage = () => {
 
         {/* সোশ্যাল লগইন বাটন */}
         <div className="flex gap-3">
-          <button
+          <button onClick={handleGoogleSignIn}
             type="button"
             className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition"
           >
@@ -146,7 +152,7 @@ const SignInPage = () => {
       <div className="mt-6">
         <Link
           href="/"
-          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 transition-all duration-200 hover:-translate-x-1"
+          className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 transition-all duration-200 hover:-translate-x-1 pb-10"
         >
           <span>←</span> হোম পেজে ফিরে যান
         </Link>
