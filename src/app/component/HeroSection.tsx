@@ -57,6 +57,7 @@ const HeroSectionPage = () => {
           <div className="relative w-64 h-48 md:w-80 md:h-60">
             
             <Image
+             
               src="/bazar-hero.png"
               alt="Bazar Illustration"
               fill
