@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -47,14 +46,14 @@ export default function CategoryDisplay({
 
   return (
     <div className="p-6 max-w-7xl mx-auto space-y-6">
-     <div>
-          <Link href="/" className="hover:text-green-600 font-bold">
+      <div>
+        <Link href="/" className="hover:text-green-600 font-bold">
           <span className="transition-transform group-hover:-translate-x-1 mr-1.5">
             ←
           </span>
-            হোমে ফিরে যাই
-          </Link>
-        </div>
+          হোমে ফিরে যাই
+        </Link>
+      </div>
       <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex items-center gap-4">
         <div className="w-16 h-16 bg-orange-50 rounded-xl flex items-center justify-center text-3xl shadow-inner">
           {categoryIcon}
@@ -96,7 +95,8 @@ export default function CategoryDisplay({
           const isUp = p.change?.dir === "up";
 
           return (
-            <div
+            <Link
+              href={`/details/${p.id}`}
               key={p.id}
               className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between"
             >
@@ -119,9 +119,7 @@ export default function CategoryDisplay({
               {/* Bottom Section: Price & Change */}
               <div className="flex items-end justify-between mt-6 pt-4 border-t border-gray-50">
                 <div>
-                  <p className="text-xs text-gray-400 mb-0.5">
-                    আজকের দাম
-                  </p>
+                  <p className="text-xs text-gray-400 mb-0.5">আজকের দাম</p>
 
                   <p className="text-2xl font-extrabold text-gray-900">
                     {p.today}{" "}
@@ -144,7 +142,7 @@ export default function CategoryDisplay({
                   </div>
                 )}
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>
