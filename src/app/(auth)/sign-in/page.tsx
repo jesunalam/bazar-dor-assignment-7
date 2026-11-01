@@ -36,6 +36,12 @@ const SignInPage = () => {
     })
     console.log(resData);
   }
+  const handleGithubSignIn= async () => {
+    const gittuData = await signIn.social({
+        provider: "github"
+    })
+    console.log(gittuData);
+}
 
   return (
     <div className="flex  flex-col items-center justify-center bg-[#F4F7F4]  text-gray-800">
@@ -128,6 +134,7 @@ const SignInPage = () => {
           </button>
 
           <button
+          onClick={handleGithubSignIn}
             type="button"
             className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition"
           >

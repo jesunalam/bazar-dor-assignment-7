@@ -11,7 +11,7 @@ import {
 } from "@heroui/react";
 import React, { useState } from "react";
 import Link from "next/link";
-import { signUp } from "@/lib/auth-client";
+import { signIn, signUp } from "@/lib/auth-client";
 import Image from "next/image";
 
 const SignUpPage = () => {
@@ -38,6 +38,18 @@ const SignUpPage = () => {
     });
     console.log(resData, error);
   };
+   const handleGoogleSignIn= async()=>{
+      const resData=await signIn.social({
+        provider:'google'
+      })
+      console.log(resData);
+    }
+    const handleGithubSignIn= async () => {
+        const gittuData = await signIn.social({
+            provider: "github"
+        })
+        console.log(gittuData);
+    }
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#F4F7F4] p-4 text-gray-800">
@@ -173,9 +185,10 @@ const SignUpPage = () => {
           </div>
         </div>
 
-        {/* সোশ্যাল লগইন বাটন */}
+        
         <div className="flex gap-3">
           <button
+           onClick={handleGoogleSignIn}
             type="button"
             className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition"
           >
@@ -185,6 +198,7 @@ const SignUpPage = () => {
           </button>
 
           <button
+           onClick={handleGithubSignIn}
             type="button"
             className="flex h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition"
           >
@@ -197,7 +211,7 @@ const SignUpPage = () => {
         <p className="mt-6 text-center text-sm text-gray-600">
           অ্যাকাউন্ট আছে?{" "}
           <Link
-            href="/signIn"
+            href="/sign-in"
             className="font-medium font-semibold text-[#089c32] hover:underline"
           >
             সাইন ইন করুন
